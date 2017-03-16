@@ -13,6 +13,7 @@ var player2Score = 0;
 const SCORE_LIMIT = 3;
 var showWinScreen = false;
 
+
 function calculateMousePos(evt) {
 	var rect = canvas.getBoundingClientRect();
 	var root = document.documentElement;
@@ -31,11 +32,12 @@ window.onload = function() { //Runs all the core functions for behavior after co
 		moveEverything();
 		drawEverything();
 	}, 1000 / framesPerSecond);
-	canvas.addEventListener('mousedown', handleMouseClick)
+	
 	canvas.addEventListener('mousemove', function(evt) {
 		var mousePos = calculateMousePos(evt);
 		paddle1Y = mousePos.y - (PADDLE_HEIGHT / 2);
 	});
+	canvas.addEventListener('mousedown', handleMouseClick);
 }
 
 function handleMouseClick(evt) {
@@ -52,7 +54,13 @@ function ballReset() {
 	}
 	ballX = canvas.width / 2;
 	ballY = canvas.height / 2;
-	ballSpeedX = -ballSpeedX;
+	if (ballSpeedX > 1)
+		{
+			ballSpeedX = -10
+		}
+	else
+		 {ballSpeedX = 10}
+	ballSpeedY = 10;
 }
 
 function computerMovement() {
@@ -62,15 +70,23 @@ function computerMovement() {
 	} else if (paddle2YCenter > ballY + 35) {
 		paddle2Y -= 10;
 	}
-	/* AI for Left Paddle
-		var paddle1YCenter = paddle1Y + (PADDLE_HEIGHT/2)
+//	 AI for Left Paddle
+/*		var paddle1YCenter = paddle1Y + (PADDLE_HEIGHT/2)
 
-		if(paddle1YCenter < ballY-35)
-		{paddle1Y += 10;}
-	 	else if (paddle1YCenter > ballY+35)
-		{paddle1Y -= 10;}
-	*/
-}
+		if (ballSpeedX > 0) {
+			if (paddle1YCenter < canvas.height/2)
+				{paddle1Y +=2;}
+			else if (paddle1YCenter > canvas.height/2)
+				{paddle1Y -=2;}
+		}
+		else if (ballX < canvas.width/2)
+		{
+			if (paddle1YCenter < ballY-35)
+				{paddle1Y += 15;}
+		 	else if (paddle1YCenter > ballY+35)
+				{paddle1Y -= 15;}
+			}
+} */
 
 function moveEverything() {
 	if (showWinScreen) {
@@ -123,17 +139,18 @@ function drawEverything() {
 		return;
 	}
 	drawNet();
+
 	colorRect(0, paddle1Y, PADDLE_THICKNESS, PADDLE_HEIGHT, 'white'); //Player paddle
 	colorRect(canvas.width - PADDLE_THICKNESS, paddle2Y, PADDLE_THICKNESS, PADDLE_HEIGHT, 'white'); //Computer paddle
 	colorCircle(ballX, ballY, 5, 'white'); //Ball
 	canvasContext.fillText(player1Score, 100, 100); //Player's Score
 	canvasContext.fillText(player2Score, canvas.width - 100, 100); //Computer's Score
-	/*		//reference numbers onscreen
+			//reference numbers onscreen
 	 		canvasContext.fillText('(x:0, y:0)',0,10);
 	 		canvasContext.fillText('(x:800, y:0)',canvas.width-55,10);
 	 		canvasContext.fillText('(x:0, y:600)',0,canvas.height-5);
 	 		canvasContext.fillText('(x:800, y:600)',canvas.width-65,canvas.height-5);
-
+/*
 	 			//displays the location of the paddles on screen.
 			canvasContext.fillText(paddle1Y, 50, 50);
 			canvasContext.fillText(ballY, 75, 75);
