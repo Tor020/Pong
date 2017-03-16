@@ -85,8 +85,8 @@ function computerMovement() {
 				{paddle1Y += 15;}
 		 	else if (paddle1YCenter > ballY+35)
 				{paddle1Y -= 15;}
-			}
-} */
+			}*/
+} 
 
 function moveEverything() {
 	if (showWinScreen) {
@@ -145,12 +145,12 @@ function drawEverything() {
 	colorCircle(ballX, ballY, 5, 'white'); //Ball
 	canvasContext.fillText(player1Score, 100, 100); //Player's Score
 	canvasContext.fillText(player2Score, canvas.width - 100, 100); //Computer's Score
-			//reference numbers onscreen
+	/*		//reference numbers onscreen
 	 		canvasContext.fillText('(x:0, y:0)',0,10);
 	 		canvasContext.fillText('(x:800, y:0)',canvas.width-55,10);
 	 		canvasContext.fillText('(x:0, y:600)',0,canvas.height-5);
 	 		canvasContext.fillText('(x:800, y:600)',canvas.width-65,canvas.height-5);
-/*
+
 	 			//displays the location of the paddles on screen.
 			canvasContext.fillText(paddle1Y, 50, 50);
 			canvasContext.fillText(ballY, 75, 75);
