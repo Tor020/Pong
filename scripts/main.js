@@ -1,4 +1,4 @@
-var canvas;
+	var canvas;
 var canvasContext;
 var ballX = 50;
 var ballSpeedX = 10;
@@ -116,7 +116,7 @@ function drawEverything() {
 	if (showWinScreen) {
 		canvasContext.fillStyle = 'white';
 		if (player1Score >= SCORE_LIMIT) {
-			canvasContext.fillText("You Win", 350, 250);
+			canvasContext.fillText("You Win!", 350, 250);
 		} else {
 			canvasContext.fillText("The Computer Wins", 350, 250);
 		}
