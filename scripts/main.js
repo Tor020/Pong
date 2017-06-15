@@ -32,13 +32,9 @@ window.onload = function() { //Runs all the core functions for behavior after co
 		drawEverything();
 	}, 1000 / framesPerSecond);
 	canvas.addEventListener('mousedown', handleMouseClick);
-	/*document.getElementById("computer").addEventListener("click", function(){
-			AI = true;
-		 });
-		document.getElementById("player").addEventListener("click", function(){
-			AI = false;
-		 }); */
+	/*document.getElementById("computer").addEventListener("click", function(){AI = true;});document.getElementById("player").addEventListener("click", function(){AI = false;}); */
 	canvas.addEventListener('mousemove', function(evt) {
+		
 		var mousePos = calculateMousePos(evt);
 		paddle1Y = mousePos.y - (PADDLE_HEIGHT / 2);
 	});
@@ -126,7 +122,7 @@ function drawEverything() {
 	drawNet();
 	colorRect(0, paddle1Y, PADDLE_THICKNESS, PADDLE_HEIGHT, 'white'); //Player paddle
 	colorRect(canvas.width - PADDLE_THICKNESS, paddle2Y, PADDLE_THICKNESS, PADDLE_HEIGHT, 'white'); //Computer paddle
-	colorCircle(ballX, ballY, 5, 'white'); //Ball
+	colorCircle(ballX, ballY, 6, 'white'); //Ball
 	canvasContext.fillText('Your Score '+ player1Score, 100, 100); //Player's Score
 	canvasContext.fillText("Computer's Score "+ player2Score, canvas.width - 100, 100); //Computer's Score
 	/*		//reference numbers onscreen

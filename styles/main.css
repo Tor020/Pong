@@ -1,8 +1,10 @@
 body {
-	background-color:#597346;
+
+	background-image:url(../drkmek.png);
     font-family: 'Roboto', sans-serif;
     font-size:1.3em;
-    line-height: 1.3em;
+    color:#9e9e9e;
+    line-height: 1em;
 }
 .container {
     display: block;
